@@ -1,27 +1,23 @@
 import React, { PureComponent } from 'react'
-import List from "./List"
 import { connect } from "react-redux";
-import ActionButton from "./ActionButton"
-import { DragDropContext } from "react-beautiful-dnd"
+import { Button } from "react-bootstrap"
+import BoardView from "./BoardView"
 
 
 class App extends PureComponent {
+  state = {
+    boardView: false
+  }
   render() {
-
-    const lists = this.props.lists;
-    console.log("list: ", lists)
     return (
       <div className="m-4">
-        <h2>Kanaban board</h2>
-        <div className="d-flex">
-          {lists.map(i => (
-            <div className="mr-3">
-              <List listId={i.id} key={i.id} title={i.title} cards={i.cards} />
-            </div>
-          )
-          )}
-          <ActionButton list />
-        </div>
+        <h2>Task Management</h2>
+        {
+          this.state.boardView ?
+            (<div><Button onClick={() => this.setState({ boardView: false })} >List View </Button> <BoardView /> </div>)
+            :
+            <Button onClick={() => this.setState({ boardView: true })}>Kanaban Board View</Button>
+        }
       </div>
     );
   }
