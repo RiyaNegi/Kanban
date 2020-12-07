@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react'
 import List from "./List"
 import { connect } from "react-redux";
+import ActionButton from "./ActionButton"
+
 
 class App extends PureComponent {
   render() {
@@ -17,6 +19,7 @@ class App extends PureComponent {
             </div>
           )
           )}
+          <ActionButton list />
         </div>
       </div>
     );

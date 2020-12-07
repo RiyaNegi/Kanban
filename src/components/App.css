@@ -33,9 +33,47 @@
     transform: rotate(360deg);
   }
 } */ 
+
+.card-txt{
+  color: rgb(63, 63, 63);
+  background-color: transparent;
+}
+
+.card-txt:hover{
+  text-decoration: underline;
+}
+
+.list-text{
+  color: rgb(255, 255, 255);
+  opacity: 1;
+  background-color:rgba(0, 0, 0, 0.15) ;
+  width:300px;
+  height: 55px;
+  cursor: pointer;
+}
+
+.list-text:hover{
+  text-decoration: underline;
+}
+
 .list-container{
   background-color: rgb(221, 221, 221);
   border-radius: 3;
   width: 300px;
   padding: 10px;
+  cursor: pointer;
+
+}
+
+.close-button{
+  background-color: transparent;
+  cursor: pointer;
+  margin-left: 10px;
+  border: none;
+  color:black
+}
+
+.close-button:hover{
+  background-color: rgba(0, 0, 0, 0.13);
+
 }

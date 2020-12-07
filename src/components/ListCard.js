@@ -1,12 +1,12 @@
 import React from "react"
 import { Card } from "react-bootstrap"
 
-const ListCard = ({ text }) => {
+const ListCard = ({ text, key }) => {
     return (
         <div>
             <Card
                 // bg={Light.toLowerCase()}
-                // key={1}
+                key={key}
                 // text={Light.toLowerCase() === 'light' ? 'dark' : 'white'}
                 // style={{ width: '18rem' }}
                 className="mb-2"
