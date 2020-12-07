@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react'
 import List from "./List"
 import { connect } from "react-redux";
 import ActionButton from "./ActionButton"
+import { DragDropContext } from "react-beautiful-dnd"
 
 
 class App extends PureComponent {
@@ -15,7 +16,7 @@ class App extends PureComponent {
         <div className="d-flex">
           {lists.map(i => (
             <div className="mr-3">
-              <List title={i.title} cards={i.cards} />
+              <List listId={i.id} key={i.id} title={i.title} cards={i.cards} />
             </div>
           )
           )}

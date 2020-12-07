@@ -3,14 +3,15 @@ import "./App.css"
 import ListCard from "./ListCard"
 import ActionButton from "./ActionButton"
 
-const List = ({ title, cards }) => {
+const List = ({ title, cards, listId }) => {
+    console.log("here list id is ", listId)
     return (
         <div className="list-container">
             <h3>{title}</h3>
             {cards.map(i => (
-                <ListCard key={i.id} text={i.text} />
+                <ListCard listId={listId} key={i.id} text={i.text} />
             ))}
-            <ActionButton />
+            <ActionButton listId={listId} />
         </div>
     )
 }

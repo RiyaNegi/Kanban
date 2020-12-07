@@ -1,6 +1,8 @@
-import React, { PureComponent } from "react"
+import React, { PureComponent } from "react";
 import TextArea from "react-textarea-autosize";
-import { Button, Card } from "react-bootstrap"
+import { Button, Card } from "react-bootstrap";
+import { connect } from "react-redux";
+import { addList, addCard } from "../actions";
 
 class ActionButton extends PureComponent {
     state = {
@@ -27,6 +29,29 @@ class ActionButton extends PureComponent {
             text: e.target.value
         })
     }
+
+    handleAddList = () => {
+        const { dispatch } = this.props;
+        const { text } = this.state;
+        if (text) {
+            dispatch(addList(text))
+            this.setState({
+                text: ""
+            })
+        }
+    }
+
+    handleAddCard = () => {
+        const { dispatch, listId } = this.props;
+        const { text } = this.state;
+        if (text) {
+            dispatch(addCard(listId, text))
+            this.setState({
+                text: ""
+            })
+        }
+    }
+
 
     renderAddButton = () => {
 
@@ -60,7 +85,7 @@ class ActionButton extends PureComponent {
                     />
                 </Card>
                 <div className="mt-2">
-                    <Button variant="success"> {buttonTitle}</Button>
+                    <Button variant="success" onMouseDown={list ? this.handleAddList : this.handleAddCard}> {buttonTitle}</Button>
                     <Button className="close-button" >X</Button>
                 </div>
             </div>
@@ -72,4 +97,4 @@ class ActionButton extends PureComponent {
     }
 }
 
-export default ActionButton
+export default connect()(ActionButton);
