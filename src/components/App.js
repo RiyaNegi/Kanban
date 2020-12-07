@@ -1,15 +1,30 @@
 import React, { PureComponent } from 'react'
 import List from "./List"
+import { connect } from "react-redux";
 
 class App extends PureComponent {
   render() {
+
+    const lists = this.props.lists;
+    console.log("list: ", lists)
     return (
-      <div className="App m-4">
+      <div className="m-4">
         <h2>Kanaban board</h2>
-        <List title="test" />
+        <div className="d-flex">
+          {lists.map(i => (
+            <div className="mr-3">
+              <List title={i.title} cards={i.cards} />
+            </div>
+          )
+          )}
+        </div>
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  lists: state.lists
+})
+
+export default connect(mapStateToProps)(App);
