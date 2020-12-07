@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +35,11 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+.list-container{
+  background-color: rgb(189, 189, 189);
+  border-radius: 3;
+  width: 300px;
+  padding: 10px;
 }

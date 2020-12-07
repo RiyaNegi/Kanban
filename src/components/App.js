@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { PureComponent } from 'react'
+import List from "./List"
 
-function App() {
-  return (
-    <div className="App">
-      <h2>Kanaban board</h2>
-    </div>
-  );
+class App extends PureComponent {
+  render() {
+    return (
+      <div className="App m-4">
+        <h2>Kanaban board</h2>
+        <List title="test" />
+      </div>
+    );
+  }
 }
 
 export default App;
