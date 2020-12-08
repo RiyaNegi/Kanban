@@ -58,8 +58,8 @@ class ActionButton extends PureComponent {
         const { list } = this.props;
         const buttonText = list ? "Add another list" : "Add another card"
         return (
-            <div onClick={this.setOpen} className={list ? " d-flex list-text  p-3" : "d-flex card-txt"}>
-                <p>+ {buttonText}</p>
+            <div onClick={this.setOpen} className={list ? "list-text  p-3" : "card-txt"}>
+                <div>+ {buttonText}</div>
             </div>
         );
     };

@@ -60,23 +60,40 @@ const listReducer = (state = InitialState, action) => {
             }
             return [...state, newList]
         case CONSTANTS.ADD_CARD:
-            const newCard = {
-                text: action.payload.text,
-                id: uuid()
+            {
+                const newCard = {
+                    text: action.payload.text,
+                    id: uuid()
+                }
+                const newState = state.map(i => {
+                    if (i.id === action.payload.listId) {
+                        return {
+                            ...i,
+                            cards: [...i.cards, newCard]
+                        };
+                    }
+                    else {
+                        return i
+                    }
+                })
+                return newState
             }
-            console.log("state in dd crd:", state)
-            const newState = state.map(i => {
-                if (i.id === action.payload.listId) {
-                    return {
-                        ...i,
-                        cards: [...i.cards, newCard]
-                    };
+        case CONSTANTS.DRAG_HAPPENED:
+            {
+                const { droppableIdStart,
+                    droppableIdEnd,
+                    droppableIndexStart,
+                    droppableIndexEnd,
+                    draggableId } = action.payload;
+
+                const newDragState = [...state];
+                if (droppableIdStart === droppableIdEnd) {
+                    const list = state.find(list => droppableIdStart === list.id)
+                    const card = list.cards.splice(droppableIndexStart, 1)
+                    list.cards.splice(droppableIndexEnd, 0, ...card)
                 }
-                else {
-                    return i
-                }
-            })
-            return newState
+                return newDragState
+            }
         default:
             return state;
     }

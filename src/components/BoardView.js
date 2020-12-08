@@ -3,12 +3,26 @@ import List from "./List"
 import { connect } from "react-redux";
 import ActionButton from "./ActionButton"
 import { DragDropContext } from "react-beautiful-dnd"
+import { sort } from "../actions";
+import styled from "styled-components";
 
+
+const ListContainer = styled.div`
+    display:flex;
+`
 class App extends PureComponent {
-
-
-    onDragEnd = () => {
-
+    onDragEnd = (result) => {
+        const { destination, source, draggableId } = result;
+        if (!destination) {
+            return
+        }
+        this.props.dispatch(sort(
+            source.droppableId,
+            destination.droppableId,
+            source.index,
+            destination.index,
+            draggableId
+        ))
     }
 
     render() {
@@ -18,7 +32,7 @@ class App extends PureComponent {
             <DragDropContext onDragEnd={this.onDragEnd}>
                 <div className="m-4">
                     <h2>Kanaban board</h2>
-                    <div className="d-flex">
+                    <ListContainer>
                         {lists.map(i => (
                             <div className="mr-3">
                                 <List listId={i.id} key={i.id} title={i.title} cards={i.cards} />
@@ -26,7 +40,7 @@ class App extends PureComponent {
                         )
                         )}
                         <ActionButton list />
-                    </div>
+                    </ListContainer>
                 </div>
             </DragDropContext>
         );
