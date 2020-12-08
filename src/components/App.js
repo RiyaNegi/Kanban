@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react'
 import { connect } from "react-redux";
 import { Button } from "react-bootstrap"
 import BoardView from "./BoardView"
+import ListView from "./ListView"
 
 
 class App extends PureComponent {
@@ -16,7 +17,10 @@ class App extends PureComponent {
           this.state.boardView ?
             (<div><Button onClick={() => this.setState({ boardView: false })} >List View </Button> <BoardView /> </div>)
             :
-            <Button onClick={() => this.setState({ boardView: true })}>Kanaban Board View</Button>
+            (<div className="d-flex flex-direction-column">
+              < Button onClick={() => this.setState({ boardView: true })}>Kanaban Board View</Button>
+              <div><ListView /></div>
+            </div>)
         }
       </div>
     );

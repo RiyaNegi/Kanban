@@ -12,39 +12,7 @@ const InitialState = [
             },
             {
                 id: uuid(),
-                text: "Bring fruits from grocery store"
-            }
-        ]
-    },
-    {
-        title: "Doing",
-        id: uuid(),
-        cards: [
-            {
-                id: uuid(),
-                text: "Study for the mock unit test and practical exams coming this weekend before the deadline"
-            }
-        ]
-    },
-    {
-        title: "Done",
-        id: uuid(),
-        cards: [
-            {
-                id: uuid(),
                 text: "Review project thesis"
-            },
-            {
-                id: uuid(),
-                text: "Push all project codes on Git"
-            },
-            {
-                id: uuid(),
-                text: "Fix light bulb"
-            },
-            {
-                id: uuid(),
-                text: "Be awesome ;)"
             }
         ]
     }
@@ -133,6 +101,17 @@ const listReducer = (state = InitialState, action) => {
             const card = newCardState[elementPos].cards[cardPos];
             card.text = newText;
             return newCardState
+        }
+        case CONSTANTS.DELETE_CARD: {
+            const { listId, id } = action.payload;
+            const newCardDelState = JSON.parse(JSON.stringify(state));
+            let elementPos = newCardDelState.map(function (x) {
+                return x.id;
+            }).indexOf(listId);
+            let cardPos = newCardDelState[elementPos].cards.map(function (x) { return x.id; }).indexOf(id);
+            newCardDelState[elementPos].cards.splice(cardPos, 1)
+
+            return newCardDelState;
         }
         default:
             return state;

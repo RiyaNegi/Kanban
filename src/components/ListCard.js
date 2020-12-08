@@ -6,7 +6,7 @@ import { faEllipsisV } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, Dropdown } from "react-bootstrap";
 import { connect } from "react-redux";
-import { editCard } from "../actions";
+import { editCard, deleteCard } from "../actions";
 import InputForm from "./InputForm";
 import TextArea from "react-textarea-autosize";
 
@@ -31,6 +31,10 @@ const ListCard = ({ text, listId, id, index, dispatch }) => {
         e.preventDefault();
         dispatch(editCard(id, listId, cardText));
         setIsEditing(false);
+    };
+
+    const handleDeleteCard = e => {
+        dispatch(deleteCard(id, listId));
     };
 
     const renderEditForm = () => {
@@ -79,7 +83,7 @@ const ListCard = ({ text, listId, id, index, dispatch }) => {
 
                                     <Dropdown.Menu>
                                         <Dropdown.Item onClick={() => setIsEditing(true)}>Edit</Dropdown.Item>
-                                        <Dropdown.Item >Delete</Dropdown.Item>
+                                        <Dropdown.Item onClick={handleDeleteCard}>Delete</Dropdown.Item>
                                     </Dropdown.Menu>
                                 </Dropdown>
                             </Card.Body>
