@@ -55,8 +55,8 @@ const listReducer = (state = InitialState, action) => {
         case CONSTANTS.ADD_LIST:
             const newList = {
                 title: action.payload,
-                cards: [],
-                id: uuid()
+                id: uuid(),
+                cards: []
             }
             return [...state, newList]
         case CONSTANTS.ADD_CARD:
@@ -110,11 +110,29 @@ const listReducer = (state = InitialState, action) => {
             }
         case CONSTANTS.EDIT_LIST_TITLE: {
             const { listId, newTitle } = action.payload;
-            var elementPos = state.map(function (x) { return x.id; }).indexOf(listId);
+            let elementPos = state.map(function (x) { return x.id; }).indexOf(listId);
             const list = state[elementPos];
             list.title = newTitle;
             const newListState = state.map(i => i)
             return newListState;
+        }
+        case CONSTANTS.DELETE_LIST: {
+            const { listId } = action.payload;
+            const newDelState = JSON.parse(JSON.stringify(state));
+            let elementPos = state.map(function (x) { return x.id; }).indexOf(listId);
+            newDelState.splice(elementPos, 1)
+            return newDelState;
+        }
+        case CONSTANTS.EDIT_CARD: {
+            const { id, newText, listId } = action.payload;
+            const newCardState = JSON.parse(JSON.stringify(state));
+            let elementPos = newCardState.map(function (x) {
+                return x.id;
+            }).indexOf(listId);
+            let cardPos = newCardState[elementPos].cards.map(function (x) { return x.id; }).indexOf(id);
+            const card = newCardState[elementPos].cards[cardPos];
+            card.text = newText;
+            return newCardState
         }
         default:
             return state;

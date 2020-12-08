@@ -6,7 +6,7 @@ import { Droppable, Draggable } from "react-beautiful-dnd"
 import styled from "styled-components";
 import { faEllipsisH } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { editTitle } from "../actions";
+import { editTitle, deleteList } from "../actions";
 import { Button, Dropdown } from "react-bootstrap";
 import { connect } from "react-redux";
 import TextArea from "react-textarea-autosize";
@@ -40,10 +40,10 @@ const List = ({ title, cards, listId, index, dispatch }) => {
         dispatch(editTitle(listId, listTitle));
     };
 
-    const handleEditClick = e => {
-        console.log("render input was called")
-        setIsEditing(true);
+    const handleDeleteList = () => {
+        dispatch(deleteList(listId));
     };
+
 
     const renderEditInput = () => {
         console.log("render input was called")
@@ -75,22 +75,23 @@ const List = ({ title, cards, listId, index, dispatch }) => {
                         {provided => (
                             <div {...provided.droppableProps} ref={provided.innerRef}>
                                 <div >
-                                    {isEditing ? renderEditInput() : (<div className="d-flex justify-content-between"> <h3>{listTitle}</h3>
-                                        <Dropdown>
-                                            <Dropdown.Toggle className="dropdown">
-                                                <FontAwesomeIcon
-                                                    icon={faEllipsisH}
-                                                    size="1x"
-                                                    color="gray"
-                                                />
-                                            </Dropdown.Toggle>
+                                    {isEditing ? renderEditInput() : (
+                                        <div className="d-flex justify-content-between"> <h3>{listTitle}</h3>
+                                            <Dropdown>
+                                                <Dropdown.Toggle className="dropdown">
+                                                    <FontAwesomeIcon
+                                                        icon={faEllipsisH}
+                                                        size="1x"
+                                                        color="gray"
+                                                    />
+                                                </Dropdown.Toggle>
 
-                                            <Dropdown.Menu>
-                                                <Dropdown.Item onClick={handleEditClick}>Edit</Dropdown.Item>
-                                                <Dropdown.Item href="#/action-2">Delete</Dropdown.Item>
-                                            </Dropdown.Menu>
-                                        </Dropdown>
-                                    </div>)}
+                                                <Dropdown.Menu>
+                                                    <Dropdown.Item onClick={() => setIsEditing(true)}>Edit</Dropdown.Item>
+                                                    <Dropdown.Item onClick={() => handleDeleteList()}>Delete</Dropdown.Item>
+                                                </Dropdown.Menu>
+                                            </Dropdown>
+                                        </div>)}
                                 </div>
                                 {cards.map((i, index) => (
                                     <ListCard listId={listId} index={index} key={i.id} text={i.text} id={i.id} />
