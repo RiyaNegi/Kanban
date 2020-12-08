@@ -28,12 +28,13 @@ const listReducer = (state = InitialState, action) => {
             }
             return [...state, newList]
         case CONSTANTS.ADD_CARD:
+            console.log("m here in reducer", action.payload)
             {
                 const newCard = {
                     text: action.payload.text,
                     id: uuid()
                 }
-                const newState = state.map(i => {
+                const newState = JSON.parse(JSON.stringify(state)).map(i => {
                     if (i.id === action.payload.listId) {
                         return {
                             ...i,
@@ -44,6 +45,7 @@ const listReducer = (state = InitialState, action) => {
                         return i
                     }
                 })
+                console.log("m here in reducer so check state:", newState)
                 return newState
             }
         case CONSTANTS.DRAG_HAPPENED:
