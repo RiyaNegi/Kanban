@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import List from "./List"
 import { connect } from "react-redux";
 import ActionButton from "./ActionButton"
-import { DragDropContext } from "react-beautiful-dnd"
+import { DragDropContext, Droppable } from "react-beautiful-dnd"
 import { sort } from "../actions";
 import styled from "styled-components";
 
@@ -12,7 +12,7 @@ const ListContainer = styled.div`
 `
 class App extends PureComponent {
     onDragEnd = (result) => {
-        const { destination, source, draggableId } = result;
+        const { destination, source, draggableId, type } = result;
         if (!destination) {
             return
         }
@@ -21,7 +21,8 @@ class App extends PureComponent {
             destination.droppableId,
             source.index,
             destination.index,
-            draggableId
+            draggableId,
+            type
         ))
     }
 
@@ -32,15 +33,20 @@ class App extends PureComponent {
             <DragDropContext onDragEnd={this.onDragEnd}>
                 <div className="m-4">
                     <h2>Kanaban board</h2>
-                    <ListContainer>
-                        {lists.map(i => (
-                            <div className="mr-3">
-                                <List listId={i.id} key={i.id} title={i.title} cards={i.cards} />
-                            </div>
-                        )
-                        )}
-                        <ActionButton list />
-                    </ListContainer>
+                    <Droppable droppableId="all-lists" direction="horizontal" type="list">
+                        {provided => (
+                            <ListContainer {...provided.droppableProps} ref={provided.innerRef}>
+                                {lists.map((i, index) => (
+                                    <div className="mr-3">
+                                        <List listId={i.id} key={i.id} title={i.title} cards={i.cards} index={index} />
+                                    </div>
+                                )
+                                )}
+                                {provided.placeholder}
+                                <ActionButton list />
+                            </ListContainer>)}
+                    </Droppable>
+
                 </div>
             </DragDropContext>
         );

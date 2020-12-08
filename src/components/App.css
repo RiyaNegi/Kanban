@@ -45,7 +45,8 @@
 }
 
 .list-text{
-  color: rgb(255, 255, 255);
+  display: block;
+  color: rgb(173, 80, 80);
   opacity: 1;
   background-color:rgba(0, 0, 0, 0.15) ;
   width:300px;
@@ -55,6 +56,10 @@
 
 .list-text:hover{
   text-decoration: underline;
+}
+
+.card-txt:-moz-drag-over {
+  opacity: 0;
 }
 
 
