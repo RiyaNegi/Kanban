@@ -8,7 +8,7 @@ class TodoList extends Component {
         return (
             <div>
                 {this.props.lists.map(i => i.cards.map(x =>
-                    <TodoItem id={x.id} text={x.text} deleteItem={this.props.deleteItem} markItemComplete={this.props.markItemComplete} />
+                    <TodoItem id={x.id} text={x.text} listId={i.id} deleteItem={this.props.deleteItem} />
                 ))}
             </div>
 

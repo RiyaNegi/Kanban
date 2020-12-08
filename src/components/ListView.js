@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import { connect } from "react-redux";
 import uuid from 'react-uuid';
 import TodoList from "./TodoList"
-import { addCard } from "../actions";
+import { addCard, deleteCard } from "../actions";
 
 class ListView extends PureComponent {
 
@@ -40,15 +40,16 @@ class ListView extends PureComponent {
     }
 
 
-    handleDeleteItem = (cardId) => {
-
-        const updatedItems = this.state.items.filter(i => {
+    handleDeleteItem = (cardId, listId) => {
+        const updatedItems = this.state.lists.filter(i => {
             return i.id !== cardId
         })
-
+        this.state.lists[0].cards.concat(updatedItems)
         this.setState({
-            lists: [].concat(updatedItems)
+            lists: this.state.lists
         })
+        const { dispatch } = this.props;
+        dispatch(deleteCard(cardId, listId));
     }
     render() {
         const lists = this.props.lists;

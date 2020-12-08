@@ -106,6 +106,7 @@ const listReducer = (state = InitialState, action) => {
         }
         case CONSTANTS.DELETE_CARD: {
             const { listId, id } = action.payload;
+            console.log("m here bitch listId:", listId, "id:", id)
             const newCardDelState = JSON.parse(JSON.stringify(state));
             let elementPos = newCardDelState.map(function (x) {
                 return x.id;

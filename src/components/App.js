@@ -18,7 +18,7 @@ class App extends PureComponent {
             (<div><Button onClick={() => this.setState({ boardView: false })} >List View </Button> <BoardView /> </div>)
             :
             (<div className="d-flex flex-column">
-              < Button onClick={() => this.setState({ boardView: true })}>Kanaban Board View</Button>
+              < Button onClick={() => this.setState({ boardView: true })}>Kanban Board View</Button>
               <div><ListView /></div>
             </div>)
         }

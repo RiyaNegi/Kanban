@@ -2,13 +2,10 @@ import React, { Component } from 'react';
 
 class TodoItem extends Component {
 
-    constructor() {
-        super();
-
-        this.onDeleteItem = (event) => {
-            this.props.deleteItem(this.props.id)
-        }
+    onDeleteItem = (event) => {
+        this.props.deleteItem(this.props.id, this.props.listId)
     }
+
     render() {
         return (
             <div>
