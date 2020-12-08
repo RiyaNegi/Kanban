@@ -6,21 +6,18 @@ import styled from "styled-components";
 const CardContainer = styled.div`
 padding:5px;
 `
-const ListCard = ({ text, key, listId, id, index }) => {
+const ListCard = ({ text, listId, id, index }) => {
     return (
         <Draggable draggableId={String(id)} index={index}>
             {provided => (
                 <CardContainer ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
                     <Card
-                        key={key}
+                        key={id}
                         listId={listId}
-                        className="mb-2"
+                        className=" card-style mb-2"
                     >
-                        <Card.Header>Header</Card.Header>
                         <Card.Body>
-                            <Card.Text>
-                                {text}
-                            </Card.Text>
+                            {text}
                         </Card.Body>
                     </Card>
                 </CardContainer>)}

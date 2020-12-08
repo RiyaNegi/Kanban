@@ -58,8 +58,15 @@
   text-decoration: underline;
 }
 
-.card-txt:-moz-drag-over {
-  opacity: 0;
+.list-style:active{
+  background-color: rgb(158, 158, 158);
+}
+
+.card-style:hover{
+background-color: rgb(202, 248, 230);
+}
+.card-style:active{
+  background-color: rgb(202, 248, 230);
 }
 
 
@@ -74,4 +81,23 @@
 .close-button:hover{
   background-color: rgba(0, 0, 0, 0.13);
 
+}
+
+.edit-style{
+  cursor: pointer !important;
+  background-color: transparent !important;
+  border: none !important;
+  outline: 0 !important;
+}
+.edit-style:hover{
+  cursor: pointer !important;
+  background-color: rgba(150, 150, 150, 0.356) !important;
+  border: none !important;
+  outline: 0 !important;
+}
+.edit-style:active{
+  cursor: pointer !important;
+  background-color: rgba(150, 150, 150, 0.356) !important;
+  border: none !important;
+  outline: 0 !important;
 }

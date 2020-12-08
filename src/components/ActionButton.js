@@ -3,7 +3,7 @@ import TextArea from "react-textarea-autosize";
 import { Button, Card } from "react-bootstrap";
 import { connect } from "react-redux";
 import { addList, addCard } from "../actions";
-
+import InputForm from "./InputForm"
 class ActionButton extends PureComponent {
     state = {
         formOpen: false,
@@ -24,11 +24,11 @@ class ActionButton extends PureComponent {
         )
     }
 
-    handleChange = (e) => {
+    handleInputChange = e => {
         this.setState({
             text: e.target.value
-        })
-    }
+        });
+    };
 
     handleAddList = () => {
         const { dispatch } = this.props;
@@ -54,7 +54,6 @@ class ActionButton extends PureComponent {
 
 
     renderAddButton = () => {
-
         const { list } = this.props;
         const buttonText = list ? "Add another list" : "Add another card"
         return (
@@ -71,24 +70,14 @@ class ActionButton extends PureComponent {
 
 
         return (
-            <div>
-                <Card
-                    style={{ minHeight: 80, minWidth: 270 }}
-                >
-                    <TextArea
-                        placeholder={placeholder}
-                        autoFocus
-                        onBlur={this.closeForm}
-                        value={this.state.text}
-                        onChange={this.handleChange}
-                        style={{ resize: "none", width: "100%", outline: "none", border: "none " }}
-                    />
-                </Card>
-                <div className="mt-2">
-                    <Button variant="success" onMouseDown={list ? this.handleAddList : this.handleAddCard}> {buttonTitle}</Button>
-                    <Button className="close-button" >X</Button>
-                </div>
-            </div>
+            <InputForm placeholder={placeholder}
+                buttonTitle={buttonTitle} handleAddList={this.handleAddList}
+                text={this.state.text}
+                onChange={this.handleInputChange}
+                closeForm={this.closeForm}
+                handleAddCard={this.handleAddCard}
+                list={list ? list : ""}
+            />
         )
     }
 

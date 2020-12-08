@@ -108,6 +108,14 @@ const listReducer = (state = InitialState, action) => {
                 }
                 return newDragState
             }
+        case CONSTANTS.EDIT_LIST_TITLE: {
+            const { listId, newTitle } = action.payload;
+            var elementPos = state.map(function (x) { return x.id; }).indexOf(listId);
+            const list = state[elementPos];
+            list.title = newTitle;
+            const newListState = state.map(i => i)
+            return newListState;
+        }
         default:
             return state;
     }
