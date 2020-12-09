@@ -16,7 +16,7 @@ class App extends PureComponent {
   render() {
     return (
       <div className="m-4">
-        <span className="text-heading">Task Management</span>
+        <span className="text-heading">Task Management Tool</span>
         {
           this.state.boardView ?
             (<div className="list-view m-4">

@@ -18,6 +18,7 @@ border-radius: 3px;
 width: 300px;
 padding: 10px;
 cursor: pointer;
+font-family: 'Rubik', sans-serif;
 `
 
 const List = ({ title, cards, listId, index, dispatch }) => {

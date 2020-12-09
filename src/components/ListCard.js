@@ -15,6 +15,7 @@ import TextArea from "react-textarea-autosize";
 const CardContainer = styled.div`
 padding:4px;
 white-space: pre-line;
+font-family: 'Rubik', sans-serif;
 `
 const ListCard = ({ text, listId, id, index, dispatch }) => {
     const [isEditing, setIsEditing] = useState(false);
