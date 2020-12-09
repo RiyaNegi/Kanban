@@ -1,9 +1,8 @@
 # Getting Started with Task Management Tool
 
-Task Management Tool
 Kanban board along with a simple todo list view for better task management
 Functions Available ->
- 1. List Views
+ 1. List View
  > 1. Add task 
  > 2. Delete task
 2. Kanban Board View
