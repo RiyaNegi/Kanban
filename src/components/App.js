@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { Button } from "react-bootstrap"
 import BoardView from "./BoardView"
 import ListView from "./ListView"
-import Pic from "./pic1.png"
 import { faTable, faList } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import 'bootstrap/dist/css/bootstrap.css';
@@ -49,9 +48,6 @@ class App extends PureComponent {
               </div>
             )
         }
-        {/* <div className="image-style">
-          <img className="img-child" src={Pic} style={{ height: 250, width: 550 }} />
-        </div> */}
       </div>
     );
   }

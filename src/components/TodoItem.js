@@ -12,7 +12,7 @@ class TodoItem extends Component {
         return (
             <div>
                 <div className="item-box mt-3 p-3 d-flex justify-content-between">
-                    <span> {this.props.text} </span>
+                    <div className="d-flex col-md-11"> {this.props.text} </div>
                     <button style={{ float: 'right', marginTop: "-4px" }} type="button" className="delete-btn" onClick={this.onDeleteItem}><FontAwesomeIcon
                         className="mr-2"
                         icon={faTimes}

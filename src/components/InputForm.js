@@ -3,16 +3,19 @@ import TextArea from "react-textarea-autosize";
 import { Button, Card } from "react-bootstrap";
 import { connect } from "react-redux";
 import { addList, addCard } from "../actions";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const InputForm = React.memo(
     ({ list, text = "", onChange, closeForm, children, buttonTitle, placeholder, handleAddCard, handleAddList }) => {
 
-        const handleClick = () =>
+        const handleClick = () => {
             list ? handleAddList() : handleAddCard()
+        }
 
         return (<div>
             <Card
-                style={{ minHeight: 80, minWidth: 270 }}
+                style={{ minHeight: 40, minWidth: 280 }}
             >
                 <TextArea
                     placeholder={placeholder}
@@ -25,7 +28,10 @@ const InputForm = React.memo(
             </Card>
             <div className="mt-2 mb-2">
                 <Button variant="success" onMouseDown={handleClick}>{buttonTitle}</Button>
-                <Button className="close-button" >X</Button>
+                <Button className="close-button" ><FontAwesomeIcon
+                    icon={faTimes}
+                    color="white"
+                /></Button>
             </div>
         </div>)
     }

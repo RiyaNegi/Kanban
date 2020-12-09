@@ -40,7 +40,6 @@ class ListView extends PureComponent {
         }
     }
 
-
     handleDeleteItem = (cardId, listId) => {
         const updatedItems = this.state.lists.filter(i => {
             return i.id !== cardId
@@ -58,9 +57,9 @@ class ListView extends PureComponent {
 
         return (
             <div className="card-parent">
-                <div className=" card-box col-md-4 mt-3 px-4 py-4">
+                <div className=" card-box col-md-5 mt-3 px-4 py-4">
                     <div className="p-3">
-                        <div className="box-heading">My-todo List</div>
+                        <div className="box-heading">My-Todo List</div>
                         <hr style={{ backgroundColor: '#dadada' }} />
                         <div className="d-flex mb-3 mt-4">
                             <input className="input-style " placeHolder="Add New Todo" type="input" onChange={this.handleInput} value={this.state.value} />

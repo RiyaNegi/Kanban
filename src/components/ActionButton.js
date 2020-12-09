@@ -65,7 +65,7 @@ class ActionButton extends PureComponent {
 
     renderForm = () => {
         const { list } = this.props
-        const placeholder = list ? "Enter List tile" : "Enter Card title";
+        const placeholder = list ? "Enter List title" : "Write down your next task";
         const buttonTitle = list ? "Add List" : "Add Card";
 
 
@@ -79,14 +79,17 @@ class ActionButton extends PureComponent {
                     handleAddCard={this.handleAddCard}
                     list={list ? list : ""}
                 /> </div>)
-                : <InputForm placeholder={placeholder}
-                    buttonTitle={buttonTitle} handleAddList={this.handleAddList}
-                    text={this.state.text}
-                    onChange={this.handleInputChange}
-                    closeForm={this.closeForm}
-                    handleAddCard={this.handleAddCard}
-                    list={list ? list : ""}
-                />
+                :
+                <div className="mt-2">
+                    <InputForm placeholder={placeholder}
+                        buttonTitle={buttonTitle} handleAddList={this.handleAddList}
+                        text={this.state.text}
+                        onChange={this.handleInputChange}
+                        closeForm={this.closeForm}
+                        handleAddCard={this.handleAddCard}
+                        list={list ? list : ""}
+                    />
+                </div>
 
         )
     }

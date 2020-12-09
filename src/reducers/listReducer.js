@@ -8,11 +8,15 @@ const InitialState = [
         cards: [
             {
                 id: uuid(),
-                text: "Bring milk from grocery store"
+                text: "Bring milk and fruits from grocery store"
             },
             {
                 id: uuid(),
-                text: "Review project thesis"
+                text: "Review final year project thesis"
+            },
+            {
+                id: uuid(),
+                text: "Push all codes from latest project to Git and write a Read-me for it"
             }
         ]
     }
@@ -28,7 +32,6 @@ const listReducer = (state = InitialState, action) => {
             }
             return [...state, newList]
         case CONSTANTS.ADD_CARD:
-            console.log("m here in reducer", action.payload)
             {
                 const newCard = {
                     text: action.payload.text,
@@ -45,7 +48,6 @@ const listReducer = (state = InitialState, action) => {
                         return i
                     }
                 })
-                console.log("m here in reducer so check state:", newState)
                 return newState
             }
         case CONSTANTS.DRAG_HAPPENED:
@@ -106,7 +108,6 @@ const listReducer = (state = InitialState, action) => {
         }
         case CONSTANTS.DELETE_CARD: {
             const { listId, id } = action.payload;
-            console.log("m here bitch listId:", listId, "id:", id)
             const newCardDelState = JSON.parse(JSON.stringify(state));
             let elementPos = newCardDelState.map(function (x) {
                 return x.id;
