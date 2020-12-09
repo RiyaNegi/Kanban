@@ -1,6 +1,19 @@
-# Getting Started with Create React App
+# Getting Started with Task Management Tool
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Task Management Tool
+Kanban board along with a simple todo list view for better task management
+Functions Available ->
+ 1. List Views
+ > 1. Add task 
+ > 2. Delete task
+2. Kanban Board View
+> 1. Create new Lists
+> 2. Drag and drop Lists
+> 3. Create new cards
+> 4. Drag and drop Cards
+> 5. Edit and Delete Lists
+> 6. Edit and Delete Cards
+
 
 ## Available Scripts
 
