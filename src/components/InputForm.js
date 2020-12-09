@@ -23,7 +23,7 @@ const InputForm = React.memo(
                     style={{ resize: "none", width: "100%", outline: "none", border: "none " }}
                 />
             </Card>
-            <div className="mt-2">
+            <div className="mt-2 mb-2">
                 <Button variant="success" onMouseDown={handleClick}>{buttonTitle}</Button>
                 <Button className="close-button" >X</Button>
             </div>

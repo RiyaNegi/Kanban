@@ -4,6 +4,7 @@ import uuid from 'react-uuid';
 import TodoList from "./TodoList"
 import { addCard, deleteCard } from "../actions";
 
+
 class ListView extends PureComponent {
 
     state = {
@@ -55,31 +56,21 @@ class ListView extends PureComponent {
         const lists = this.props.lists;
         console.log("list: ", lists)
 
-        const btn_style = {
-            marginLeft: "10px",
-            marginBottom: "5px"
-        }
-
-        const input_style = {
-            width: "250px",
-            padding: "5px"
-        }
-
         return (
-            <div>
-                <div className="row">
-                    <div className="col-md-4">
-                        <div >
-                            <h2 className="heading">TODO List</h2>
-                            <input style={input_style} placeHolder="Add New Todo" type="input" onChange={this.handleInput} value={this.state.value} />
-                            <button style={btn_style} type="button" className="btn btn-primary btn-md" onClick={this.handleAddItem}>Add</button>
-                            <TodoList lists={lists} deleteItem={this.handleDeleteItem} listId={this.state.listId} />
+            <div className="card-parent">
+                <div className=" card-box col-md-4 mt-3 px-4 py-4">
+                    <div className="p-3">
+                        <div className="box-heading">My-todo List</div>
+                        <hr style={{ backgroundColor: '#dadada' }} />
+                        <div className="d-flex mb-3 mt-4">
+                            <input className="input-style " placeHolder="Add New Todo" type="input" onChange={this.handleInput} value={this.state.value} />
+                            <button className="common-btn-style btn-style px-4 py-2 ml-4" type="button" onClick={this.handleAddItem}>Add</button>
                         </div>
+                        <TodoList lists={lists} deleteItem={this.handleDeleteItem} listId={this.state.listId} />
                     </div>
-                    <div className="col-md-4"></div>
-
                 </div>
             </div>
+
         );
     }
 }

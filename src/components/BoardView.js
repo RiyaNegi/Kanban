@@ -31,8 +31,8 @@ class App extends PureComponent {
         console.log("list: ", lists)
         return (
             <DragDropContext onDragEnd={this.onDragEnd}>
-                <div className="m-4">
-                    <h2>Kanaban board</h2>
+                <div className="mt-4">
+                    {/* <h2>Kanban board</h2> */}
                     <Droppable droppableId="all-lists" direction="horizontal" type="list">
                         {provided => (
                             <ListContainer {...provided.droppableProps} ref={provided.innerRef}>

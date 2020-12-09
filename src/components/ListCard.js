@@ -13,7 +13,8 @@ import TextArea from "react-textarea-autosize";
 
 
 const CardContainer = styled.div`
-padding:5px;
+padding:4px;
+white-space: pre-line;
 `
 const ListCard = ({ text, listId, id, index, dispatch }) => {
     const [isEditing, setIsEditing] = useState(false);
@@ -39,7 +40,7 @@ const ListCard = ({ text, listId, id, index, dispatch }) => {
 
     const renderEditForm = () => {
         return (
-            <div>
+            <div className="p-1">
                 <Card
                     style={{ minHeight: 80, minWidth: 270 }}
                 >
@@ -49,10 +50,10 @@ const ListCard = ({ text, listId, id, index, dispatch }) => {
                         value={cardText}
                         onChange={e => handleChange(e)}
                         onBlur={closeForm}
-                        style={{ resize: "none", width: "100%", outline: "none", border: "none " }}
+                        style={{ resize: "none", width: "100%", outline: "none", border: "none ", borderRadius: "6px" }}
                     />
                 </Card>
-                <div className="mt-2">
+                <div className="mt-2 mb-2">
                     <Button variant="success" onMouseDown={saveCard}>Save</Button>
                     <Button className="close-button" onMouseDown={closeForm}>X</Button>
                 </div>
@@ -68,24 +69,26 @@ const ListCard = ({ text, listId, id, index, dispatch }) => {
                         <Card
                             key={id}
                             listId={listId}
-                            className=" card-style mb-2"
+                            className=" card-style card-wrap"
                         >
                             <Card.Body className="d-flex justify-content-between">
-                                <span>{text}</span>
-                                <Dropdown>
-                                    <Dropdown.Toggle className="dropdown">
-                                        <FontAwesomeIcon
-                                            icon={faEllipsisV}
-                                            size="1x"
-                                            color="gray"
-                                        />
-                                    </Dropdown.Toggle>
+                                <div className="d-flex align-items-center p-3 col-md-10">{text}</div>
+                                <div className="mr-3 dp-class">
+                                    <Dropdown>
+                                        <Dropdown.Toggle className="dropdown">
+                                            <FontAwesomeIcon
+                                                icon={faEllipsisV}
+                                                size="1x"
+                                                color="gray"
+                                            />
+                                        </Dropdown.Toggle>
 
-                                    <Dropdown.Menu>
-                                        <Dropdown.Item onClick={() => setIsEditing(true)}>Edit</Dropdown.Item>
-                                        <Dropdown.Item onClick={handleDeleteCard}>Delete</Dropdown.Item>
-                                    </Dropdown.Menu>
-                                </Dropdown>
+                                        <Dropdown.Menu>
+                                            <Dropdown.Item onClick={() => setIsEditing(true)}>Edit</Dropdown.Item>
+                                            <Dropdown.Item onClick={handleDeleteCard}>Delete</Dropdown.Item>
+                                        </Dropdown.Menu>
+                                    </Dropdown>
+                                </div>
                             </Card.Body>
                         </Card>
                     </CardContainer>)}

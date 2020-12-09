@@ -1,10 +1,10 @@
 import "./App.css"
 import ListCard from "./ListCard"
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ActionButton from "./ActionButton"
 import { Droppable, Draggable } from "react-beautiful-dnd"
 import styled from "styled-components";
-import { faEllipsisH } from "@fortawesome/free-solid-svg-icons";
+import { faEdit } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { editTitle, deleteList } from "../actions";
 import { Button, Dropdown } from "react-bootstrap";
@@ -14,7 +14,6 @@ import TextArea from "react-textarea-autosize";
 
 
 const ListContainer = styled.div`
-background-color: rgb(221, 221, 221);
 border-radius: 3px;
 width: 300px;
 padding: 10px;
@@ -24,6 +23,8 @@ cursor: pointer;
 const List = ({ title, cards, listId, index, dispatch }) => {
     const [isEditing, setIsEditing] = useState(false);
     const [listTitle, setListTitle] = useState(title);
+    const [fixTitle, setFixTitle] = useState(title);
+
 
     const handleFocus = e => {
         e.target.select();
@@ -31,12 +32,17 @@ const List = ({ title, cards, listId, index, dispatch }) => {
 
     const handleChange = e => {
         e.preventDefault();
-        setListTitle(e.target.value);
+        setFixTitle(e.target.value);
+    };
+
+    const handleCancel = e => {
+        setIsEditing(false);
+        setFixTitle(listTitle);
     };
 
     const handleFinishEditing = e => {
         setIsEditing(false);
-        console.log("here in list listId:", listId)
+        setListTitle(fixTitle);
         dispatch(editTitle(listId, listTitle));
     };
 
@@ -46,22 +52,20 @@ const List = ({ title, cards, listId, index, dispatch }) => {
 
 
     const renderEditInput = () => {
-        console.log("render input was called")
         return (
             <div>
-                <span>helsifhoisf</span>
-                <form onSubmit={handleFinishEditing}>
+                <form >
                     <TextArea
-                        placeholder="ENter title"
+                        placeholder="Enter title"
                         onFocus={handleFocus}
-                        value={listTitle}
+                        value={fixTitle}
                         onChange={handleChange}
-                        style={{ resize: "none", width: "100%", outline: "none", border: "none " }}
+                        style={{ resize: "none", width: "100%", outline: "none", border: "none ", borderRadius: "6px" }}
                     />
                 </form>
                 <div className="mt-2">
                     <Button variant="success" onMouseDown={handleFinishEditing}>Update</Button>
-                    <Button className="close-button" onClick={() => setIsEditing(false)}>X</Button>
+                    <Button className="close-button" onClick={handleCancel}>X</Button>
                 </div>
             </div >
         );
@@ -74,13 +78,14 @@ const List = ({ title, cards, listId, index, dispatch }) => {
                     <Droppable droppableId={String(listId)} type="card">
                         {provided => (
                             <div {...provided.droppableProps} ref={provided.innerRef}>
-                                <div >
+                                <div className="p-2">
                                     {isEditing ? renderEditInput() : (
-                                        <div className="d-flex justify-content-between"> <h3>{listTitle}</h3>
+                                        <div className="d-flex justify-content-between mr-1"> <h3>{listTitle}</h3>
                                             <Dropdown>
-                                                <Dropdown.Toggle className="dropdown">
+                                                <Dropdown.Toggle id="dropdown-no-caret"
+                                                    className="dropdown">
                                                     <FontAwesomeIcon
-                                                        icon={faEllipsisH}
+                                                        icon={faEdit}
                                                         size="1x"
                                                         color="gray"
                                                     />
@@ -92,6 +97,7 @@ const List = ({ title, cards, listId, index, dispatch }) => {
                                                 </Dropdown.Menu>
                                             </Dropdown>
                                         </div>)}
+
                                 </div>
                                 {cards.map((i, index) => (
                                     <ListCard listId={listId} index={index} key={i.id} text={i.text} id={i.id} />

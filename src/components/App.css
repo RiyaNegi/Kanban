@@ -14,7 +14,7 @@
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: column;body
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
@@ -38,15 +38,17 @@
   display: block;
   color: rgb(63, 63, 63);
   background-color: transparent;
+  
 }
 
 .card-txt:hover{
+  background-color:rgba(0, 0, 0, 0.15) ;
   text-decoration: underline;
 }
 
 .list-text{
   display: block;
-  color: rgb(173, 80, 80);
+  color: rgb(20, 20, 20);
   opacity: 1;
   background-color:rgba(0, 0, 0, 0.15) ;
   width:300px;
@@ -57,16 +59,35 @@
 .list-text:hover{
   text-decoration: underline;
 }
+.action-list{
+  background-color: #fff2cc;
+  border-radius: 3px;
+  width: 300px;
+  padding: 10px;
+  cursor: pointer;
+  display: flex;  
+  height: 150px;
+}
+.list-style{
+  background-color: #fff2cc;
+word-break: break-all;
+white-space:pre;
 
+}
 .list-style:active{
-  background-color: rgb(158, 158, 158);
+  background-color: #ffe7a0;
+  border:none;
 }
 
 .card-style:hover{
 background-color: rgb(202, 248, 230);
+padding:-10px !important;
 }
 .card-style:active{
   background-color: rgb(202, 248, 230);
+}
+.card-body{
+  padding: 0 !important;
 }
 
 
@@ -102,15 +123,139 @@ background-color: rgb(202, 248, 230);
   outline: 0 !important;
 }
 
-.isItemCompleted-done {
-  text-decoration: line-through;
+
+.item-box{   
+    border-radius : 8px;
+    border: 1px solid rgb(223, 223, 223);
+    box-shadow:   2px 5px 14px 0px rgba(190, 190, 190, 0.5);
+    word-break: break-all;
+    white-space: normal;
 }
 
-.item{   
-    box-shadow: 2px 2px 2px 2px #ccc;
-    border: 2px #eee;
-    margin: 10px;
-    padding: 7px;
-    text-align: left
+.body-cont{
+  background-color: #c6e9eb;
 }
 
+.image-style{
+  display: flex;
+  justify-content: flex-end;
+}
+.img-child{
+  display: inline-block;
+}
+
+.text-heading{
+  font-family: 'Yeseva One', cursive;
+  font-size: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.box-heading{
+  font-family: 'Yeseva One', cursive;
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.card-parent{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-box{
+  display: flex;
+flex-direction: column;
+  background-color: white;
+  border-radius : 8px;
+  box-shadow:   2px 5px 14px 0px rgba(157, 159, 160, 0.5);
+}
+
+.input-style{
+  font-size: 18px;
+  width: 78%;
+  border:none;
+  color:rgb(70, 70, 70);;
+  background-color: transparent;
+  border-bottom:1px solid rgb(44, 44, 44);
+}
+
+.input-style::placeholder{
+  color:rgb(187, 187, 187);
+}
+
+.input-style:focus{
+  outline: 0;
+  border-bottom:2px solid rgb(44, 44, 44);
+}
+
+.common-btn-style{
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 800;
+  border:none;
+  border-radius:6px;
+  color:white;
+}
+.common-btn-style:focus{
+  border:none;
+  outline: 0;
+}
+
+.btn-style{
+  background-color: rgb(34, 34, 34);
+}
+
+
+.button-style:focus{
+  outline: 0;
+}
+
+.board-view{
+  display: flex;
+  justify-content: center;
+}
+
+.delete-btn{
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 20px;
+  border: none;
+}
+.delete-btn:active{
+  border: none;
+  outline: 0;
+}
+.delete-btn:focus{
+  border: none;
+  outline: 0;
+}
+
+.list-view{
+  display: block;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.list-view-btn{
+  min-width: 50px !important;
+}
+.dropdown-toggle::after {
+  display:none !important;
+}
+
+.dropdown{
+  background-color: transparent !important;
+  border: none !important;
+}
+
+.card-wrap{
+  flex-flow: row wrap;
+}
+
+.dp-class{
+  display: flex;
+  align-items: center;
+}

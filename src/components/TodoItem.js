@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class TodoItem extends Component {
 
@@ -9,9 +11,13 @@ class TodoItem extends Component {
     render() {
         return (
             <div>
-                <div className="item">
+                <div className="item-box mt-3 p-3 d-flex justify-content-between">
                     <span> {this.props.text} </span>
-                    <button style={{ float: 'right', marginTop: "-4px" }} type="button" className="btn btn-danger btn-sm" onClick={this.onDeleteItem}>x</button>
+                    <button style={{ float: 'right', marginTop: "-4px" }} type="button" className="delete-btn" onClick={this.onDeleteItem}><FontAwesomeIcon
+                        className="mr-2"
+                        icon={faTimes}
+                        color="red"
+                    /></button>
                 </div>
             </div>
         );
