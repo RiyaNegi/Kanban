@@ -16,6 +16,7 @@ class App extends PureComponent {
     return (
       <div className="m-4">
         <span className="text-heading">Task Management Tool</span>
+        <hr style={{ backgroundColor: 'black' }} />
         {
           this.state.boardView ?
             (<div className="list-view m-4">

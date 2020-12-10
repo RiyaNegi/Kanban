@@ -28,7 +28,6 @@ class App extends PureComponent {
 
     render() {
         const lists = this.props.lists;
-        console.log("list: ", lists)
         return (
             <DragDropContext onDragEnd={this.onDragEnd}>
                 <div className="mt-4">
