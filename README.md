@@ -1,8 +1,10 @@
 # Getting Started with Task Management Tool
 
+Kanban board along with a simple todo list view for better task management.
+The Board view and List view are interconnected and any changes made on either of the views will be persist.
+
 Visit the live demo here -> https://riyanegi.github.io/Kanban-Board/
 
-Kanban board along with a simple todo list view for better task management
 Functions Available ->
  1. List View
  > 1. Add task 
